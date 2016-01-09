@@ -11,9 +11,7 @@ Package.onUse(function(api) {
   api.versionsFrom("1.2.0.1");
 
   // Core packages and 3rd party packages
-  api.use("ddp");
-  api.use("tracker");
-  api.use("jagi:atmosphere");
+  api.use("jagi:astronomy@1.2.7");
 
   // The files of this package
   api.addFiles("shared/index.js", ["client", "server"]);
