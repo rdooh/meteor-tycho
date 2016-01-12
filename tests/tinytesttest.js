@@ -2,7 +2,6 @@
 // Set up a simple base class
 const TychoTest = Astro.Class({
   name: 'Tycho',
-  typeField: 'type',
   fields: {
     '_eventStream': 'array',
     'name': 'string'
@@ -14,6 +13,7 @@ const Items = new Mongo.Collection('items');
 // Inherit as you might for
 const KeplerTest = TychoTest.inherit({
   name: 'Kepler',
+  typeField: 'type',
   collection: Items,
   fields: {
     someField: 'string'
@@ -22,6 +22,7 @@ const KeplerTest = TychoTest.inherit({
 
 const tycho = new TychoTest();
 const kepler = new KeplerTest();
+console.log('kepler object', kepler);
 
 
 
@@ -46,9 +47,8 @@ Tinytest.add('Tycho - Basic Fields tests', (test) => {
 
 
 Tinytest.add('Kepler - Basic Kepler tests', (test) => {
-  console.log("message");
-  console.log(kepler);
-  test.equal(KeplerTest.getFieldsNames(),["_eventStream","name","_id","someField"],'Kepler should have a expected fields.');
-  test.equal(kepler.type,'KeplerTest','KeplerTest should be `KeplerTest`');
+  test.equal(_.difference(KeplerTest.getFieldsNames(),["_eventStream","name","_id","someField","type"]),[],'Kepler should have a expected fields.');
+  test.equal(_.difference(["_eventStream","name","_id","someField"],KeplerTest.getFieldsNames()),[],'Kepler should have a expected fields.');
+  test.equal(kepler.type,'Kepler','KeplerTest type should be `Kepler`');
 
 });
