@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.versionsFrom("1.2.0.1");
 
   // Core packages and 3rd party packages
-  api.use("jagi:astronomy@1.2.7");
+  api.use("jagi:astronomy@2.0.0-rc.1");
 
   api.imply("jagi:astronomy");
 
@@ -28,15 +28,11 @@ Package.onTest(function (api) {
     'stevezhu:lodash',
     'tinytest',
     'insecure',
-    'jagi:astronomy',
-    'jagi:astronomy-timestamp-behavior',
-    'jagi:astronomy-slug-behavior',
-    'jagi:astronomy-softremove-behavior',
-    'jagi:astronomy-validators',
-    'jagi:astronomy-simple-validators'
+    'jagi:astronomy'
   ];
   api.use(testPackages);
   api.use('robdooh:tycho');
 
   api.addFiles('tests/tinytesttest.js');
+  api.addFiles('tests/eventStreamAsSecondModel.js');
 });
