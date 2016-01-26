@@ -16,10 +16,13 @@ Package.onUse(function(api) {
   api.imply("jagi:astronomy");
 
   // The files of this package
-  api.addFiles("lib/index.js", ["client", "server"]);
+  api.addFiles([
+    'lib/modules/core/global.js',
+    'lib/modules/core/config.js'
+  ], ["client", "server"]);
 
   // The variables that become global for users of your package
-  api.export("log", ["client", "server"]);
+  api.export(['Tycho', 'Observatory'], ['client', 'server']);
 });
 
 Package.onTest(function (api) {
